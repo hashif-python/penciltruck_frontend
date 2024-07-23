@@ -1,0 +1,34 @@
+/* Gallery.css */
+.image-container.interactive {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.image-container.interactive:hover .overlay {
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.gallery-image {
+    display: block;
+    width: 100%;
+    transition: transform .5s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.1);
+}

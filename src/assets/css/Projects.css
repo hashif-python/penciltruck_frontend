@@ -1,0 +1,34 @@
+/* Projects.css */
+.projects-section {
+    padding: 60px 0;
+    background-color: #f8f9fa; /* Optional: change background color */
+}
+
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: none; /* Remove borders for a cleaner look */
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Slight raise effect on hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Soft shadow for depth */
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover; /* Ensures images are nicely cropped */
+}
+
+.card-title {
+    color: #007bff; /* Consistent color for titles */
+}
+
+.card-text {
+    color: #666; /* Soften text color for readability */
+    margin-bottom: 15px; /* Space above button */
+}
+
+.button {
+    width: 100%; /* Full width button for better mobile responsiveness */
+}

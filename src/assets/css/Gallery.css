@@ -1,0 +1,24 @@
+/* Gallery.css */
+.image-container {
+    height: 300px; /* Fixed height for all image containers */
+    width: 100%; /* Width is responsive but can be set to a fixed width if preferred */
+    overflow: hidden; /* Ensures no part of the image overflows the set container size */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers the image in the container vertically and horizontally */
+    margin-bottom: 20px; /* Spacing between rows */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Optional: shadow for depth */
+}
+
+.gallery-image {
+    height: auto; /* Maintains the aspect ratio */
+    max-height: 100%; /* Ensures the image does not exceed the container height */
+    width: auto; /* Maintains the aspect ratio */
+    max-width: 100%; /* Ensures the image does not exceed the container width */
+    transition: transform 0.3s ease; /* Smooth transition for any transformations */
+}
+
+.image-container:hover .gallery-image {
+    transform: scale(1.05); /* Optional: slight scale up on hover */
+}

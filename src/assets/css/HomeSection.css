@@ -1,0 +1,101 @@
+/* HomeSection.css */
+.hero-background {
+    background: url('../images/hero.webp') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: backgroundZoom 30s infinite alternate ease-in-out;
+}
+
+@keyframes backgroundZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+.hero-container {
+    width: 90%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Increase opacity for better text readability */
+    backdrop-filter: blur(5px); /* Soften the background behind the text for modern glass effect */
+    border-radius: 10px; /* Smoothed corners for container */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for depth */
+}
+
+.display-4 {
+    font-size: 4rem; /* Increase size for more impact */
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Enhance text shadow for better legibility */
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.4rem; /* Adjust lead size for harmony */
+    font-weight: 400; /* Standard weight for readability */
+    color: #dcdcdc; /* Lighter color for contrast without strain */
+    margin-bottom: 2rem;
+}
+
+.button {
+    font-size: 1.2rem;
+    padding: 15px 35px;
+    background-image: linear-gradient(45deg, #007bff, #004085); /* Dynamic gradient */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px); /* Subtle lift */
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
+}
+
+
+/* HomeSection.css - Updated Color and Background Styles for Form */
+
+/* Modal Content */
+.form-modal-content {
+    background-color: #f8f9fa; /* Light grey background for a softer look */
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    border: none;
+}
+
+/* Modal Header */
+.form-modal-header {
+    background-color: #e9ecef; /* Slightly darker grey than the modal content for subtle contrast */
+    color: #007bff; /* Keep the blue to maintain brand color consistency */
+    font-size: 1.5rem;
+    border-bottom: 2px solid #dee2e6; /* Light grey border for a refined separation */
+}
+
+/* Form Fields */
+.form-control {
+    background-color: #ffffff; /* White background for inputs to stand out against the modal */
+    border: 2px solid #adb5bd; /* Light grey border for a soft, modern look */
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    border-color: #17a2b8; /* Use a cyan color for a fresh focus highlight */
+    box-shadow: 0 0 8px rgba(23, 162, 184, 0.5); /* Matching cyan glow for focus state */
+}
+
+/* Labels */
+.form-label {
+    color: #495057; /* Dark grey for high contrast and readability */
+}
+
+/* Buttons */
+.volunteer-button {
+    background-image: linear-gradient(45deg, #28a745, #218838); /* Gradient from green shades for a vibrant look */
+    color: white;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+.volunteer-button:hover {
+    background-image: linear-gradient(45deg, #218838, #1e7e34); /* Darker green on hover for depth */
+    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.6);
+}

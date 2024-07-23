@@ -1,0 +1,52 @@
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+}
+
+.footer-brand {
+    padding-right: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-heading {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.social-icons a {
+    font-size: 24px;
+    color: #fff;
+}
+
+.social-icons a:hover {
+    color: #ccc;
+}
+
+.contact-icons li {
+    margin-bottom: 10px;
+}
+
+.newsletter-input {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+}
+
+.button-outline-light:hover {
+    border-color: #fff;
+    color: #fff;
+}

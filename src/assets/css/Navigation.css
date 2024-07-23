@@ -1,0 +1,27 @@
+.navbar-transparent {
+    background-color: #f8f9fa; /* Light grey background for initial navbar state */
+    transition: background-color 0.7s ease;
+}
+
+.navbar-scrolled {
+    background-color: #fff; /* Changes to white when scrolled */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease; /* Faster transition when scrolling */
+}
+
+.nav-item {
+    margin-right: 1rem; /* Spacing between navigation items */
+}
+
+.nav-donate {
+    background-color: #ff4500; /* Bright orange for donate button */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners for donate button */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.nav-donate:hover {
+    background-color: #e63e00; /* Slightly darker orange on hover */
+    transition: background-color 0.2s ease; /* Quicker transition for hover */
+}

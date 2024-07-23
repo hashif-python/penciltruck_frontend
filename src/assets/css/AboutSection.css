@@ -1,0 +1,35 @@
+.about-section {
+    background-color: #f8f9fa; /* Light background to keep the area light and clean */
+}
+
+.section-title {
+    color: #0056b3; /* Using a strong color for titles */
+    margin-bottom: 20px;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: #666; /* Soft color for lead text */
+}
+
+#about-tabs .nav-link {
+    padding: 10px 20px;
+}
+
+#about-tabs .nav-link.active {
+    color: #fff;
+    background-color: #007bff; /* Highlight color for active tab */
+}
+
+.tab-content {
+    min-height: 300px; /* Minimum height to prevent shifting */
+    padding: 20px;
+    background-color: #fff; /* White background for the content */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+/* Transition for smooth switching */
+.tab-content {
+    transition: all 0.3s ease-in-out;
+}
