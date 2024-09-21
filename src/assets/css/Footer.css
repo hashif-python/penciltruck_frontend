@@ -1,52 +1,73 @@
+/* General Footer Styling */
 .footer {
-    background-color: #343a40;
+    background-color: #222;
     color: #fff;
-    background-size: cover;
-    background-position: center;
-}
-
-.footer-brand {
-    padding-right: 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0; 
+    font-size: 0.875rem; 
 }
 
 .footer-heading {
-    color: #fff;
-    margin-bottom: 15px;
-    font-size: 16px;
-    text-transform: uppercase;
+    font-size: 1rem; 
+    font-weight: bold;
+    color: #ffdd57;
 }
 
-.footer a {
-    color: rgba(255, 255, 255, 0.7);
-    transition: color 0.3s;
+.footer p {
+    font-size: 0.875rem;
+    color: #bbbbbb;
 }
 
-.footer a:hover {
-    color: #fff;
-    text-decoration: none;
-}
-
-.social-icons a {
-    font-size: 24px;
-    color: #fff;
-}
-
-.social-icons a:hover {
-    color: #ccc;
+.footer-brand .brand-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 .contact-icons li {
+    font-size: 0.875rem; /* Smaller font for contact info */
     margin-bottom: 10px;
 }
 
-.newsletter-input {
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: #fff;
+.social-icons a {
+    font-size: 1.25rem; /* Slightly reduced icon size */
+    color: #ffdd57;
+    transition: color 0.3s ease;
 }
 
-.button-outline-light:hover {
-    border-color: #fff;
+.social-icons a:hover {
+    color: #ffffff;
+}
+
+.newsletter-input {
+    background-color: #333;
     color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px; /* Reduced padding */
+}
+
+.newsletter-input::placeholder {
+    color: #bbbbbb;
+}
+
+.newsletter-form button {
+    background-color: #ffdd57;
+    border-color: #ffdd57;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #ffd500;
+    color: #000;
+}
+
+.footer-brand p {
+    text-align: left; 
+    margin-top: 1rem;
+}
+@media (max-width: 767px) {
+    .footer-brand p {
+        text-align: center; /* Center text on mobile */
+    }
 }

@@ -1,0 +1,24 @@
+/* App-level styles for full-page layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    background-color: #222; /* Customize as needed */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}

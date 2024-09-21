@@ -1,101 +1,157 @@
 /* HomeSection.css */
 .hero-background {
-    background: url('../images/hero.webp') no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero.webp') no-repeat center center fixed;
     background-size: cover;
-    position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: backgroundZoom 30s infinite alternate ease-in-out;
+    position: relative;
+    overflow: hidden;
 }
 
-@keyframes backgroundZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
+.hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(5px);
+    z-index: -1;
 }
 
 .hero-container {
-    width: 90%;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.6); /* Increase opacity for better text readability */
-    backdrop-filter: blur(5px); /* Soften the background behind the text for modern glass effect */
-    border-radius: 10px; /* Smoothed corners for container */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for depth */
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
 }
 
-.display-4 {
-    font-size: 4rem; /* Increase size for more impact */
-    color: #fff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Enhance text shadow for better legibility */
+.hero-icon {
+    font-size: 5rem;
+    color: #f8f9fa;
     margin-bottom: 1rem;
 }
 
-.lead {
-    font-size: 1.4rem; /* Adjust lead size for harmony */
-    font-weight: 400; /* Standard weight for readability */
-    color: #dcdcdc; /* Lighter color for contrast without strain */
-    margin-bottom: 2rem;
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.button {
-    font-size: 1.2rem;
-    padding: 15px 35px;
-    background-image: linear-gradient(45deg, #007bff, #004085); /* Dynamic gradient */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.button:hover {
-    transform: translateY(-3px); /* Subtle lift */
-    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
-}
-
-
-/* HomeSection.css - Updated Color and Background Styles for Form */
-
-/* Modal Content */
-.form-modal-content {
-    background-color: #f8f9fa; /* Light grey background for a softer look */
-    border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    padding: 30px;
-    border: none;
-}
-
-/* Modal Header */
-.form-modal-header {
-    background-color: #e9ecef; /* Slightly darker grey than the modal content for subtle contrast */
-    color: #007bff; /* Keep the blue to maintain brand color consistency */
+.hero-subtitle {
     font-size: 1.5rem;
-    border-bottom: 2px solid #dee2e6; /* Light grey border for a refined separation */
+    color: #f8f9fa;
+    margin-bottom: 2rem;
+    font-weight: 300;
 }
 
-/* Form Fields */
-.form-control {
-    background-color: #ffffff; /* White background for inputs to stand out against the modal */
-    border: 2px solid #adb5bd; /* Light grey border for a soft, modern look */
+.cta-button {
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+}
+
+/* Modal Styles */
+.custom-modal .modal-content {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.custom-modal .modal-header {
+    border-bottom: none;
+    padding: 20px 30px;
+}
+
+.custom-modal .modal-title {
+    font-weight: 700;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.custom-modal .modal-body {
+    padding: 30px;
+}
+
+.custom-modal .form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.custom-modal .form-control {
+    border: 2px solid #ced4da;
     border-radius: 8px;
+    padding: 12px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-control:focus {
-    border-color: #17a2b8; /* Use a cyan color for a fresh focus highlight */
-    box-shadow: 0 0 8px rgba(23, 162, 184, 0.5); /* Matching cyan glow for focus state */
+.custom-modal .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-/* Labels */
-.form-label {
-    color: #495057; /* Dark grey for high contrast and readability */
+.custom-modal .submit-button {
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-/* Buttons */
-.volunteer-button {
-    background-image: linear-gradient(45deg, #28a745, #218838); /* Gradient from green shades for a vibrant look */
-    color: white;
-    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+.custom-modal .submit-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
 }
 
-.volunteer-button:hover {
-    background-image: linear-gradient(45deg, #218838, #1e7e34); /* Darker green on hover for depth */
-    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.6);
+.toast-container {
+    z-index: 9999;
+    position: fixed;
+    top: 20px;
+    right: 20px;
 }
+
+/* Animation for hero content */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-icon,
+.hero-title,
+.hero-subtitle,
+.cta-button {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.hero-icon { animation-delay: 0.2s; }
+.hero-title { animation-delay: 0.4s; }
+.hero-subtitle { animation-delay: 0.6s; }
+.cta-button { animation-delay: 0.8s; }

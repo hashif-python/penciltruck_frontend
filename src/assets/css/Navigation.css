@@ -1,27 +1,65 @@
-.navbar-transparent {
-    background-color: #f8f9fa; /* Light grey background for initial navbar state */
-    transition: background-color 0.7s ease;
+/* Navbar Styles */
+.custom-navbar {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-scrolled {
-    background-color: #fff; /* Changes to white when scrolled */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    transition: background-color 0.3s ease; /* Faster transition when scrolling */
+    background-color: #0056b3 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.brand-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 .nav-item {
-    margin-right: 1rem; /* Spacing between navigation items */
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
 }
 
+.nav-item:hover {
+    color: #ffdd57 !important;
+    text-decoration: underline;
+}
+
+/* Donate Button Styling */
 .nav-donate {
-    background-color: #ff4500; /* Bright orange for donate button */
-    color: white;
+    background-color: #ffdd57;
+    color: #333 !important;
+    border-radius: 5px;
     padding: 10px 20px;
-    border-radius: 5px; /* Rounded corners for donate button */
-    transition: background-color 0.3s ease; /* Smooth background color transition */
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-donate:hover {
-    background-color: #e63e00; /* Slightly darker orange on hover */
-    transition: background-color 0.2s ease; /* Quicker transition for hover */
+    background-color: #ffd500;
+    color: #000 !important;
+    box-shadow: 0 4px 10px rgba(255, 221, 87, 0.5);
+}
+
+/* Adjustments for Mobile View */
+@media (max-width: 992px) {
+    .custom-navbar {
+        padding: 15px;
+    }
+
+    .nav-item {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-donate {
+        margin-top: 10px;
+        padding: 12px 20px;
+        font-size: 1.1rem;
+    }
 }
