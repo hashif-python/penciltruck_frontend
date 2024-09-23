@@ -12,6 +12,7 @@ import StreetLight from './pages/StreetLight';
 import Gallery from './pages/Gallery';
 import Donate from './pages/DonateSection';
 import PaymentScreen from './pages/PaymentScreen';
+import DonatePage from './pages/DonateScreen';
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -22,6 +23,7 @@ const AppRoutes = () => {
     { path: "/projects", element: <Projects /> },
     { path: "/about", element: <AboutSection /> },
     { path: "/donate", element: <Donate /> },
+    {path:"/donate-screen",element:<DonatePage/>},
     {path:"/payment",element:<PaymentScreen/>},
   ]);
   return routes;
