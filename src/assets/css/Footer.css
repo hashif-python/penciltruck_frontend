@@ -1,73 +1,91 @@
-/* General Footer Styling */
-.footer {
-    background-color: #222;
-    color: #fff;
-    padding: 20px 0; 
-    font-size: 0.875rem; 
+/* Footer.css */
+.footer-gradient {
+  background: linear-gradient(to right, #1a1a1a, #2c2c2c);
 }
 
-.footer-heading {
-    font-size: 1rem; 
-    font-weight: bold;
-    color: #ffdd57;
+footer {
+  font-size: 0.875rem;
 }
 
-.footer p {
-    font-size: 0.875rem;
-    color: #bbbbbb;
+footer h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.25rem;
 }
 
-.footer-brand .brand-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #ffffff;
+footer a {
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.contact-icons li {
-    font-size: 0.875rem; /* Smaller font for contact info */
-    margin-bottom: 10px;
+footer a:hover {
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateX(5px);
 }
 
 .social-icons a {
-    font-size: 1.25rem; /* Slightly reduced icon size */
-    color: #ffdd57;
-    transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: #ffffff;
+  background-color: var(--bs-primary);
+  transform: translateY(-3px);
 }
 
-.newsletter-input {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px; /* Reduced padding */
+.text-light-50 {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
-.newsletter-input::placeholder {
-    color: #bbbbbb;
+.footer-links li {
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
 }
 
-.newsletter-form button {
-    background-color: #ffdd57;
-    border-color: #ffdd57;
-    color: #333;
-    transition: background-color 0.3s ease;
+.footer-links li:hover {
+  transform: translateX(5px);
 }
 
-.newsletter-form button:hover {
-    background-color: #ffd500;
-    color: #000;
+.footer-form .form-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
-.footer-brand p {
-    text-align: left; 
+.footer-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-form .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.footer-form .btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  transition: all 0.3s ease;
+}
+
+.footer-form .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 991.98px) {
+  footer h6 {
     margin-top: 1rem;
-}
-@media (max-width: 767px) {
-    .footer-brand p {
-        text-align: center; /* Center text on mobile */
-    }
+  }
 }
