@@ -1,6 +1,6 @@
 /* HomeSection.css */
 .hero-background {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero.JPG') no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/hero.JPG') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -23,19 +23,22 @@
 }
 
 .hero-container {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     max-width: 800px;
+    opacity: 0;
+    animation: fadeIn 2s ease-out 3s forwards;
 }
 
 .hero-icon {
     font-size: 5rem;
     color: #f8f9fa;
     margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 .hero-title {
@@ -51,22 +54,23 @@
     color: #f8f9fa;
     margin-bottom: 2rem;
     font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button {
     font-size: 1.2rem;
     padding: 12px 30px;
-    background-color: #007bff;
+    background-color: #ff6b6b;
     border: none;
     border-radius: 50px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
 }
 
 .cta-button:hover {
-    background-color: #0056b3;
+    background-color: #ff5252;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
 }
 
 /* Modal Styles */
@@ -79,11 +83,14 @@
 .custom-modal .modal-header {
     border-bottom: none;
     padding: 20px 30px;
+    background-color: #4a69bd;
+    color: #ffffff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .custom-modal .modal-title {
     font-weight: 700;
-    color: #333;
     font-size: 1.8rem;
 }
 
@@ -93,7 +100,7 @@
 
 .custom-modal .form-label {
     font-weight: 600;
-    color: #495057;
+    color: #4a69bd;
 }
 
 .custom-modal .form-control {
@@ -104,12 +111,12 @@
 }
 
 .custom-modal .form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #4a69bd;
+    box-shadow: 0 0 0 0.2rem rgba(74, 105, 189, 0.25);
 }
 
 .custom-modal .submit-button {
-    background-color: #28a745;
+    background-color: #4a69bd;
     border: none;
     border-radius: 8px;
     padding: 12px;
@@ -119,9 +126,9 @@
 }
 
 .custom-modal .submit-button:hover {
-    background-color: #218838;
+    background-color: #3c5aa6;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
+    box-shadow: 0 4px 10px rgba(74, 105, 189, 0.4);
 }
 
 .toast-container {
@@ -132,12 +139,20 @@
 }
 
 /* Animation for hero content */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -148,22 +163,21 @@
 .hero-title,
 .hero-subtitle,
 .cta-button {
-    animation: fadeInUp 0.8s ease-out forwards;
     opacity: 0;
 }
 
 .hero-icon {
-    animation-delay: 0.2s;
+    animation: fadeInUp 1.5s ease-out 3.5s forwards;
 }
 
 .hero-title {
-    animation-delay: 0.4s;
+    animation: fadeInUp 1.5s ease-out 4s forwards;
 }
 
 .hero-subtitle {
-    animation-delay: 0.6s;
+    animation: fadeInUp 1.5s ease-out 4.5s forwards;
 }
 
 .cta-button {
-    animation-delay: 0.8s;
+    animation: fadeInUp 1.5s ease-out 5s forwards;
 }
