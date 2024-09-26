@@ -13,7 +13,7 @@ function Gallery() {
     useEffect(() => {
         const fetchGalleryData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/gallery');
+                const response = await fetch('https://www.penciltruck.com/api/gallery');
                 const data = await response.json();
                 const formattedData = data.data.map(item => ({
                     description: item.title,

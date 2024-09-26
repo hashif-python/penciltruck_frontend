@@ -1,74 +1,96 @@
-/* DonateSection.css */
-.gallery-page {
-    padding: 80px 0;
-    background-color: #f8f9fa;
+/* DonatePage.css */
+.donate-page {
+  padding: 80px 0;
+  background-image: url('../images/gallerybg.JPG');
+  /* Add your background image here */
+  background-size: cover;
+  /* Ensure the background covers the entire page */
+  background-position: center;
+  /* Center the background image */
+  background-attachment: fixed;
+  /* Make the background fixed, so it stays in place when scrolling */
+  background-repeat: no-repeat;
+  height: 100vh;
+  /* Ensure the page takes up the full height of the viewport */
+  position: relative;
+  /* Ensure the background and content are positioned correctly */
+  overflow: hidden;
+  /* Prevent content from overflowing the page */
+  font-family: 'Roboto', sans-serif;
+  /* Modern font */
 }
 
-.gallery-container {
-    min-height: calc(100vh - 160px);
+.donate-container {
+  min-height: 100vh;
+  /* Ensure the content fills the height of the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.donate-button {
+
+/* Card and Button Enhancements */
+.donation-card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.85);
+  /* Make the cards slightly transparent to show background */
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+.donation-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Enhancements */
+.donate-button-custom {
   font-size: 1.2rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 5px;
+  border-radius: 8px;
+  background-color: #17a2b8;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.payment-card, .book-card {
-  transition: transform 0.2s;
+.donate-button-custom:hover {
+  background-color: #138496;
+  transform: translateY(-3px);
 }
 
-.payment-card:hover, .book-card:hover {
-  transform: scale(1.05);
-}
-
-.payment-title {
-  font-weight: bold;
-  color: #28a745;
-}
-
-.pay-button {
-  font-size: 1.2rem;
-}
-/* Modal Header Custom Styles */
+/* Modal Customization */
 .modal-header-custom {
   background-color: #28a745;
   color: white;
   border-bottom: none;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .modal-title-custom {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: white;
 }
 
-/* Modal Body Custom Styles */
 .modal-body-custom {
   padding: 2rem;
-  background-color: #f8f9fa;
+  background-color: #f7f8fc;
 }
 
-/* Form Label and Input Custom Styles */
-.form-label-custom {
-  font-weight: 600;
-  color: #333;
+/* Ensure Modal Always Starts from the Top */
+.modal-dialog {
+  top: 0;
+  transform: translateY(0);
 }
 
-.form-control-custom {
-  padding: 0.75rem;
-  border-radius: 8px;
-  border: 1px solid #ced4da;
-  box-shadow: none;
-  transition: all 0.2s ease;
-}
-
+/* Focus Handling for Form Fields */
 .form-control-custom:focus {
   border-color: #28a745;
   box-shadow: 0px 0px 5px rgba(40, 167, 69, 0.5);
 }
 
-/* Payment Button Custom Styles */
+/* Payment Button */
 .pay-button-custom {
   background-color: #28a745;
   border: none;
@@ -82,61 +104,23 @@
   background-color: #218838;
 }
 
-/* Additional Text and Helper Styles */
+/* General Enhancements */
 .text-muted {
   font-size: 0.875rem;
   color: #6c757d !important;
-}
-/* General Card Styles */
-.donation-card {
-  border-radius: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: linear-gradient(135deg, #f3f3f3 30%, #f9f9f9 100%);
-  border: none;
-}
-
-.donation-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Icon Container */
 .icon-container {
   background: linear-gradient(135deg, #28a745, #218838);
   border-radius: 50%;
-  padding: 1rem;
+  padding: 1.5rem;
   margin-bottom: 1.5rem;
   display: inline-block;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .icon {
   font-size: 2.5rem;
   color: white;
-}
-
-/* Card Title Custom */
-.card-title-custom {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #343a40;
-  margin-bottom: 1rem;
-}
-
-/* Card Text Custom */
-.card-text-custom {
-  font-size: 1.1rem;
-  color: #6c757d;
-  margin-bottom: 2rem;
-}
-
-/* Button Styles */
-.donate-button-custom {
-  font-size: 1.2rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.donate-button-custom:hover {
-  background-color: #117a8b;
 }

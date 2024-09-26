@@ -10,6 +10,8 @@ import {
   Form,
 } from "react-bootstrap";
 import "../assets/css/DonatePage.css";
+import { ToastContainer, toast } from "react-toastify";
+
 
 function DonatePage() {
   const [showBookModal, setShowBookModal] = useState(false);
@@ -17,8 +19,8 @@ function DonatePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookDonationForm, setBookDonationForm] = useState({
     name: "",
-    classBooks: "",
-    totalBooks: "",
+    studyMaterialType: "",
+    description: "",
     streetAddress: "",
     city: "",
     state: "",
@@ -26,7 +28,6 @@ function DonatePage() {
     country: "",
     contactInfo: "",
   });
-  
 
   const handleBookModalOpen = () => setShowBookModal(true);
   const handlePaymentModalOpen = () => setShowPaymentModal(true);
@@ -35,6 +36,7 @@ function DonatePage() {
     setShowBookModal(false);
     setShowPaymentModal(false);
   };
+
   const handleBookFormChange = (e) => {
     const { name, value } = e.target;
     setBookDonationForm((prevState) => ({
@@ -43,30 +45,88 @@ function DonatePage() {
     }));
   };
 
-  const handleBookFormSubmit = (e) => {
+  function getCsrfToken() {
+    let csrfToken = null;
+    if (document.cookie && document.cookie !== "") {
+      document.cookie.split(";").forEach((cookie) => {
+        const trimmedCookie = cookie.trim();
+        if (trimmedCookie.startsWith("csrftoken=")) {
+          csrfToken = trimmedCookie.substring("csrftoken=".length, trimmedCookie.length);
+        }
+      });
+    }
+    return csrfToken;
+  }
+
+  const handleBookFormSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    const csrfToken = getCsrfToken(); // Get CSRF token
 
-    setTimeout(() => {
-      console.log("Book donation form submitted:", bookDonationForm);
-      setIsSubmitting(false);
-      setBookDonationForm({
-        name: "",
-        classBooks: "",
-        totalBooks: "",
-        streetAddress: "",
-        city: "",
-        state: "",
-        postalCode: "",
-        country: "",
-        contactInfo: "",
+    try {
+      const response = await fetch("https://www.penciltruck.com/api/study-material-donations/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrfToken, // Include CSRF token
+        },
+        body: JSON.stringify({
+          name: bookDonationForm.name,
+          study_material_type: bookDonationForm.studyMaterialType,
+          description: bookDonationForm.description,
+          street_address: bookDonationForm.streetAddress,
+          city: bookDonationForm.city,
+          state: bookDonationForm.state,
+          postal_code: bookDonationForm.postalCode,
+          country: bookDonationForm.country,
+          mobile_no: bookDonationForm.contactInfo,  // Use contactInfo as mobile_no
+        }),
       });
-      handleBookModalClose();
-    }, 2000);
+
+      if (response.ok) {
+        toast.success("Study material donation submitted successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        setIsSubmitting(false);
+
+        // Reset form
+        setBookDonationForm({
+          name: "",
+          studyMaterialType: "",
+          description: "",
+          streetAddress: "",
+          city: "",
+          state: "",
+          postalCode: "",
+          country: "",
+          contactInfo: "",
+        });
+        handleBookModalClose();
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.message || "Failed to submit donation form.", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      toast.error("An error occurred while submitting the form. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="gallery-page">
+    <div className="donate-page">
+      <ToastContainer
+        className="toast-container"
+        position="top-right"
+        style={{ position: "fixed", top: "20px", right: "20px", zIndex: 9999 }}
+      />
       <Container
         className="d-flex vh-100 justify-content-center align-items-center"
         fluid
@@ -78,12 +138,12 @@ function DonatePage() {
                 <div className="icon-container">
                   <i className="fas fa-book icon"></i>
                 </div>
-                <Card.Title className="card-title-custom">Donate Books</Card.Title>
+                <Card.Title className="card-title-custom">Donate Study Material</Card.Title>
                 <Card.Text className="card-text-custom">
-                  Give the gift of knowledge by donating books to those in need. Your contribution can brighten a child's future.
+                  Give the gift of knowledge by donating study materials to those in need. Your contribution can brighten a child's future.
                 </Card.Text>
                 <Button variant="info" className="donate-button-custom" onClick={handleBookModalOpen}>
-                  Donate Books
+                  Donate Study Material
                 </Button>
               </Card.Body>
             </Card>
@@ -106,7 +166,7 @@ function DonatePage() {
           </Col>
         </Row>
 
-        {/* Book Donation Modal */}
+        {/* Study Material Donation Modal */}
         <Modal
           show={showBookModal}
           onHide={handleBookModalClose}
@@ -115,7 +175,7 @@ function DonatePage() {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Donate Books</Modal.Title>
+            <Modal.Title>Donate Study Material</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={handleBookFormSubmit}>
@@ -133,35 +193,42 @@ function DonatePage() {
                   required
                 />
               </FloatingLabel>
+
+              {/* Study Material Type */}
+              <Form.Select
+                name="studyMaterialType"
+                value={bookDonationForm.studyMaterialType}
+                onChange={handleBookFormChange}
+                required
+                className="mb-3"
+              >
+                <option value="">Select Study Material Type</option>
+                <option value="Books">Books</option>
+                <option value="Notebooks">Notebooks</option>
+                <option value="Stationery">Stationery</option>
+                <option value="Other">Other</option>
+              </Form.Select>
+
+              {/* Description Box */}
               <FloatingLabel
-                controlId="classBooksInput"
-                label="Class of Books"
+                controlId="descriptionInput"
+                label="Description of Study Material"
                 className="mb-3"
               >
                 <Form.Control
-                  type="text"
-                  name="classBooks"
-                  placeholder="Primary, Secondary, etc."
-                  value={bookDonationForm.classBooks}
+                  as="textarea"
+                  name="description"
+                  placeholder="Describe the study materials"
+                  value={bookDonationForm.description}
                   onChange={handleBookFormChange}
+                  style={{ height: '100px' }}
                   required
                 />
               </FloatingLabel>
-              <FloatingLabel
-                controlId="totalBooksInput"
-                label="Total Number of Books"
-                className="mb-3"
-              >
-                <Form.Control
-                  type="number"
-                  name="totalBooks"
-                  placeholder="Enter number"
-                  value={bookDonationForm.totalBooks}
-                  onChange={handleBookFormChange}
-                  required
-                  min="1"
-                />
-              </FloatingLabel>
+
+              {/* Pickup Location */}
+              <h5 className="mb-3">Pickup Location</h5>
+
               <FloatingLabel
                 controlId="streetAddressInput"
                 label="Street Address"
@@ -229,19 +296,24 @@ function DonatePage() {
                 />
               </FloatingLabel>
               <FloatingLabel
-                controlId="contactInfoInput"
-                label="Contact Information"
+                controlId="mobileNoInput"
+                label="Mobile No"
                 className="mb-3"
               >
                 <Form.Control
-                  type="text"
+                  type="tel"
                   name="contactInfo"
-                  placeholder="Email or Phone Number"
+                  placeholder="Enter Mobile No"
                   value={bookDonationForm.contactInfo}
                   onChange={handleBookFormChange}
+                  pattern="[0-9]{10}"
                   required
                 />
+                <Form.Text className="text-muted">
+                  Enter your 10-digit mobile number.
+                </Form.Text>
               </FloatingLabel>
+
               <Button
                 variant="primary"
                 type="submit"
