@@ -4,10 +4,7 @@ import { FaSearch, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa
 import '../assets/css/GalleryPage.css';
 
 // Importing images
-import image1 from "../assets/images/gal1.jpeg";
-import image2 from "../assets/images/gal2.jpeg";
-import image3 from "../assets/images/gal3.jpeg";
-import image4 from "../assets/images/gal4.jpeg";
+
 
 function Gallery() {
     const [eventData, setEventData] = useState([]);
@@ -16,28 +13,30 @@ function Gallery() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
-        const galleryData = [
-            {
-                id: 1,
-                title: 'Summer Tour 2023',
-                description: 'Unforgettable moments from our summer adventure',
-                images: [
-                    { id: 1, src: image1, alt: 'Summer beach' },
-                    { id: 2, src: image2, alt: 'Mountain hiking' }
-                ]
-            },
-            {
-                id: 2,
-                title: 'Winter Retreat',
-                description: 'Cozy gatherings and snowy landscapes',
-                images: [
-                    { id: 3, src: image3, alt: 'Snowy cabin' },
-                    { id: 4, src: image4, alt: 'Ski resort' }
-                ]
-            }
-        ];
+        const fetchImages = async () => {
+            try {
+                const response = await fetch('https://www.penciltruck.com/api/gallery');
+                const data = await response.json();
+                const formattedData = data.data.map(item => ({
+                    description: item.title,
+                    images: [
+                        { id: item.id, src: item.image1, alt: 'Image 1', group: item.id },
+                        item.image2 && { id: item.id + 1, src: item.image2, alt: 'Image 2', group: item.id },
+                        item.image3 && { id: item.id + 2, src: item.image3, alt: 'Image 3', group: item.id },
+                        item.image4 && { id: item.id + 3, src: item.image4, alt: 'Image 4', group: item.id }
+                    ].filter(Boolean) // Remove undefined or null entries
+                }));
 
-        setEventData(galleryData);
+                setEventData(formattedData);
+            } catch (error) {
+                console.error("Error fetching images:", error);
+            }
+        };
+
+        fetchImages();
+
+
+
     }, []);
 
     const handleEventClick = (event) => {

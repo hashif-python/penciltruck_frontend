@@ -21,30 +21,28 @@ const Gallery = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const galleryData = [
-      {
-        id: 1,
-        title: "Summer Tour 2023",
-        description: "Unforgettable moments from our summer adventure",
-        images: [image1, image2],
-      },
-      {
-        id: 2,
-        title: "Winter Retreat",
-        description: "Cozy gatherings and snowy landscapes",
-        images: [image3, image4],
-      },
-      {
-        id: 3,
-        title: "Spring Festival",
-        description: "Colorful celebrations of nature's renewal",
-        images: [image2, image3],
-      },
-    ];
-
-    setEventData(galleryData);
-  }, []);
+    useEffect(() => {
+        const fetchGalleryData = async () => {
+            try {
+                const response = await fetch('https://www.penciltruck.com/api/gallery');
+                const data = await response.json();
+                const formattedData = data.data.map(item => ({
+                    description: item.title,
+                    images: [
+                        { id: item.id, src: item.image1, alt: 'Image 1', group: item.id },
+                        item.image2 && { id: item.id + 1, src: item.image2, alt: 'Image 2', group: item.id },
+                        item.image3 && { id: item.id + 2, src: item.image3, alt: 'Image 3', group: item.id },
+                        item.image4 && { id: item.id + 3, src: item.image4, alt: 'Image 4', group: item.id }
+                    ].filter(Boolean) // This will remove any undefined entries from the images array
+                }));
+                setImageData(formattedData);
+                console.log('Gallery data:', formattedData);
+            } catch (error) {
+                console.error('Failed to fetch gallery data:', error);
+            }
+        };
+        fetchGalleryData();
+    }, []);
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);

@@ -22,6 +22,20 @@ function HomeSection() {
         resetFormFields();
     };
 
+
+    function getCsrfToken() {
+        let csrfToken = null;
+        if (document.cookie && document.cookie !== "") {
+            document.cookie.split(";").forEach((cookie) => {
+                const trimmedCookie = cookie.trim();
+                if (trimmedCookie.startsWith("csrftoken=")) {
+                    csrfToken = trimmedCookie.substring("csrftoken=".length, trimmedCookie.length);
+                }
+            });
+        }
+        return csrfToken;
+    }
+
     const handleInputChange = (e, type) => {
         const { value } = e.target;
         if (type === "name") setName(value);
@@ -41,24 +55,26 @@ function HomeSection() {
 
     // POST the email and phone to /api/send-otp/ and handle success/failure
     const handleSendOtp = async () => {
-        const fullPhoneNumber = `+91${phone}`; // Add country code to the phone number
+        const fullPhoneNumber = `+91${phone}`;
+        const csrfToken = getCsrfToken(); // Get CSRF token
 
         if (emailRegex.test(email) && phoneRegex.test(phone) && name) {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/send-otp/", {
+                const response = await fetch("https://www.penciltruck.com/api/send-otp/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken, // Include CSRF token
                     },
                     body: JSON.stringify({
                         email,
-                        phone: phone,  // Send phone number with country code
+                        phone: phone,
                     }),
                 });
 
                 if (response.ok) {
                     toast.success("OTP has been sent to your email and mobile.");
-                    setIsOtpSent(true); // Show OTP input fields
+                    setIsOtpSent(true);
                 } else {
                     const data = await response.json();
                     toast.error(data.message || "Failed to send OTP. Please try again.");
@@ -74,6 +90,7 @@ function HomeSection() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let isValid = true;
+        const csrfToken = getCsrfToken(); // Get CSRF token
 
         setErrors({ email: "", phone: "" });
 
@@ -107,10 +124,11 @@ function HomeSection() {
         if (isOtpSent) {
             setIsOtpValidated(true);
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/volunteer-request", {
+                const response = await fetch("https://www.penciltruck.com/api/volunteer-request", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken, // Include CSRF token
                     },
                     body: JSON.stringify({
                         name,
@@ -137,6 +155,7 @@ function HomeSection() {
             toast.error("Invalid OTP. Please try again.");
         }
     };
+
 
     const resetFormFields = () => {
         setName("");
