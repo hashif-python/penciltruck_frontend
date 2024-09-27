@@ -15,6 +15,7 @@ import image3 from "../assets/images/gal3.jpeg";
 import image4 from "../assets/images/gal4.jpeg";
 
 const Gallery = () => {
+   const [imageData, setImageData] = useState([]);
   const [eventData, setEventData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
