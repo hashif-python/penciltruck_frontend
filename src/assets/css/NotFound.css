@@ -1,0 +1,36 @@
+.not-found-container {
+  background-color: #f8f9fa;
+}
+
+.clip-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background-image: linear-gradient(45deg, #007bff, #6610f2);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+.pulse-button {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 576px) {
+  .clip-text {
+    font-size: 2rem;
+  }
+}
